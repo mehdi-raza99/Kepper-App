@@ -7,7 +7,7 @@ function CreateArea(props) {
   });
   function handleChange(event) {
     const { name, value } = event.target;
-    if (name == "title") {
+    if (name === "title") {
       setNote((previous) => ({ ...previous, title: value }));
     } else {
       setNote((previous) => ({ ...previous, content: value }));
