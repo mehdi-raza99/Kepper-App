@@ -5,6 +5,13 @@ function CreateArea(props) {
     title: "",
     content: "",
   });
+
+function handleSubmit(event) {
+            event.preventDefault();
+            props.add(note);
+            setNote({ title: "", content: "" });
+}
+  
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "title") {
@@ -16,12 +23,13 @@ function CreateArea(props) {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           name="title"
           placeholder="Title"
           onChange={handleChange}
           value={note.title}
+          required
         />
         <textarea
           name="content"
@@ -29,14 +37,9 @@ function CreateArea(props) {
           rows="3"
           onChange={handleChange}
           value={note.content}
+          required
         />
-        <button
-          onClick={(event) => {
-            event.preventDefault();
-            props.add(note);
-            setNote({ title: "", content: "" });
-          }}
-        >
+        <button type="submit">
           Add
         </button>
       </form>
